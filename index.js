@@ -8,42 +8,21 @@ const todoList = () => {
     }
   
     const overdue = () => {
-      // Write the date check condition here and return the array of overdue items accordingly.
-      // FILL YOUR CODE HERE
-      // ..
-      // ..
-      // ..
-      return all.filter((item)=> item.dueDate<new Date().toLocaleDateString("en-CA"));
+     return all.filter((item)=>item.dueDate< today)
     }
   
     const dueToday = () => {
-      // Write the date check condition here and return the array of todo items that are due today accordingly.
-      // FILL YOUR CODE HERE
-      // ..
-      // ..
-      // ..
-      return all.filter((item)=> item.dueDate==new Date().toLocaleDateString("en-CA"));
+       return all.filter((item)=>item.dueDate=== today)
     }
   
     const dueLater = () => {
-      // Write the date check condition here and return the array of todo items that are due later accordingly.
-      // FILL YOUR CODE HERE
-      // ..
-      // ..
-      // ..
-      return all.filter((item)=> item.dueDate>new Date().toLocaleDateString("en-CA"));
+      return all.filter((item)=>item.dueDate> today)
     }
   
     const toDisplayableList = (list) => {
-      // Format the To-Do list here, and return the output string as per the format given above.
-      // FILL YOUR CODE HERE
-      // ..
-      // ..
-      // ..
-      // return OUTPUT_STRING
-      return list.filter(item=>` ${item.completed ? '[x]' : '[ ]'} ${item.title} ${item.dueDate==new Date().toLocaleDateString("en-CA")}`);
+       let res= list.map(item=>`${item.completed ? '[x] ':'[ ] '}${item.title} ${item.dueDate===today ? " ":item.dueDate}`).join("\n")
+          return res;
     }
-  
     return { all, add, markAsComplete, overdue, dueToday, dueLater, toDisplayableList };
   }
   
@@ -77,17 +56,17 @@ const todoList = () => {
   console.log("Overdue")
   var overdues = todos.overdue()
   var formattedOverdues = todos.toDisplayableList(overdues)
-  console.log(formattedOverdues)
+  console.log(formattedOverdues);
   console.log("\n\n")
   
   console.log("Due Today")
   let itemsDueToday = todos.dueToday()
   let formattedItemsDueToday = todos.toDisplayableList(itemsDueToday)
-  console.log(formattedItemsDueToday)
+  console.log(formattedItemsDueToday);
   console.log("\n\n")
   
   console.log("Due Later")
   let itemsDueLater = todos.dueLater()
   let formattedItemsDueLater = todos.toDisplayableList(itemsDueLater)
-  console.log(formattedItemsDueLater)
+  console.log(formattedItemsDueLater);
   console.log("\n\n")
